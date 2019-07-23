@@ -1,0 +1,33 @@
+version: 1.0.{build}
+branches:
+  only:
+  - master
+image: Visual Studio 2019
+#platform:
+#  - Any CPU
+matrix:
+  fast_finish: true
+configuration: Release
+#- Release
+#- Debug
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+cache: packages -> **\packages.config
+nuget:
+  account_feed: true
+before_build:
+- cmd: dotnet restore
+#- cmd: nuget restore
+build:
+    publish_aspnet_core: true
+    verbosity: minimal
+  #publish_wap: true
+  #parallel: true
+#environment:
+  #Test1: Test1_from_yml
