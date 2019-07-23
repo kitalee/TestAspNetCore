@@ -29,5 +29,5 @@ build:
     verbosity: minimal
   #publish_wap: true
   #parallel: true
-#environment:
-  #Test1: Test1_from_yml
+environment:
+  X-Robots-Tag: noindex

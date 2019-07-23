@@ -3,10 +3,10 @@
   <parameter name="X-Robots-Tag" defaultValue="">
     <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/location/system.webServer/httpProtocol/customHeaders/add[@name='X-Robots-Tag']/@value" />
   </parameter>
-  <parameter name="X-Robots-Tag" defaultValue="">
+  <!--<parameter name="X-Robots-Tag" defaultValue="">
     <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/location/system.webServer/httpProtocol/customHeaders/add[@key='X-Robots-Tag']/@value" />
-  </parameter>
+  </parameter>-->
   <parameter name="ASPNETCORE_ENVIRONMENT" defaultValue="">
-    <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/location/system.webServer/aspNetCore/environmentVariables/environmentVariable[@key='ASPNETCORE_ENVIRONMENT']/@value" />
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/location/system.webServer/aspNetCore/environmentVariables/environmentVariable[@name='ASPNETCORE_ENVIRONMENT']/@value" />
   </parameter>
 </parameters>
