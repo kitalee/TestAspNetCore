@@ -29,5 +29,5 @@ build:
     verbosity: minimal
   #publish_wap: true
   #parallel: true
-environment:
-  X-Robots-Tag: noindex
+#environment:
+  #X-Robots-Tag: noindex
