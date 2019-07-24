@@ -3,8 +3,6 @@ branches:
   only:
   - master
 image: Visual Studio 2019
-#platform:
-#  - Any CPU
 matrix:
   fast_finish: true
 configuration: Release
@@ -23,7 +21,6 @@ nuget:
   account_feed: true
 before_build:
 - cmd: dotnet restore
-#- cmd: nuget restore
 build:
     publish_aspnet_core: true
     verbosity: minimal
