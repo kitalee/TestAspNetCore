@@ -6,8 +6,6 @@ image: Visual Studio 2019
 matrix:
   fast_finish: true
 configuration: Release
-#- Release
-#- Debug
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -24,7 +22,9 @@ before_build:
 build:
     publish_aspnet_core: true
     verbosity: minimal
-  #publish_wap: true
-  #parallel: true
-#environment:
-  #X-Robots-Tag: noindex
+after_build:
+- cmd: msbuild "%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" -p:Configuration=Debug /t:Package /p:PackageLocation="%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%_Staging.zip"
+artifacts:
+- path: '%APPVEYOR_PROJECT_NAME%_Staging.zip'
+  name: staging artifact
+  type: WebDeployPackage
