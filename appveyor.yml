@@ -23,7 +23,8 @@ build:
     publish_aspnet_core: true
     verbosity: minimal
 after_build:
-- cmd: msbuild "%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" -p:Configuration=Debug /t:Package /p:PackageLocation="%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%_Staging.zip"
+- cmd: msbuild "%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:configuration="debug";WebPublishMethod=Package;PackageFileName="%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%_Staging.zip";DesktopBuildPackageLocation="%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%_Staging.zip";PackageAsSingleFile=true;PackageLocation="%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%_Staging.zip";DeployOnBuild=true;DeployTarget=Package
+#- cmd: msbuild "%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" -p:Configuration=Debug /t:Package /p:PackageLocation="%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_PROJECT_NAME%_Staging.zip"
 artifacts:
 - path: '%APPVEYOR_PROJECT_NAME%_Staging.zip'
   name: staging artifact
